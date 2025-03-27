@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Records</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .emp {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .emp b {
+            color: #333;
+        }
+        .empimg {
+            width: 100%;
+            height: auto;
+            max-width: 250px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body onload="getData();">
+    <h1>ABC Colleges</h1>
+    <h2>Library Users</h2>
+    <div id="empData"></div>
+
+    <xml id="xmldata" style="display: none;">
+        <empinfo>
+            <emp>
+                <Name>Jake Roberto</Name> 
+                <Age>28</Age> 
+                <Contact_Number>09897562834</Contact_Number> 
+                <Address>Wakanda, Malolos</Address>
+                <Marital_Status>Single</Marital_Status>
+                <Position>Assistant</Position>
+                <Empimage>https://thumbs.dreamstime.com/z/solo-image-male-businessman-wearing-suit-guts-pose-employee-282467567.jpg?w=576</Empimage> 
+            </emp>
+            <emp>
+                <Name>Cortello Gracia</Name> 
+                <Age>38</Age> 
+                <Contact_Number>09142789837</Contact_Number> 
+                <Address>Taal, Malolos, Bulacan</Address>
+                <Marital_Status>Complicated</Marital_Status>
+                <Position>Manager</Position>
+                <Empimage>https://media.istockphoto.com/id/1334205777/photo/employee-solo-performance.jpg?s=1024x1024&w=is&k=20&c=pOyLK-ucRKRr14PGrWzMeBNQWBbq256hp5K0hKmfwEE=</Empimage> 
+            </emp>
+            <emp>
+                <Name>Arthur Nerey</Name> 
+                <Age>58</Age> 
+                <Contact_Number>09673459826</Contact_Number> 
+                <Address>Mexico, Pampanga</Address>
+                <Marital_Status>Married</Marital_Status>
+                <Position>Senior Manager</Position>
+                <Empimage>https://thumbs.dreamstime.com/b/happy-businessman-7651032.jpg</Empimage> 
+            </emp>
+            <emp>
+                <Name>Nathan Drake</Name> 
+                <Age>28</Age> 
+                <Contact_Number>09796237634</Contact_Number> 
+                <Address>Libertalia, Mindanao</Address>
+                <Marital_Status>Engaged</Marital_Status>
+                <Position>Paralegal</Position>
+                <Empimage>https://thumbs.dreamstime.com/z/skeptical-attractive-young-man-isolated-white-35689764.jpg</Empimage>
+            </emp>                              
+        </empinfo>
+    </xml>
+
+    <script>
+        function getData() {
+            let xml = document.getElementById("xmldata");
+            let z = xml.getElementsByTagName("emp");
+            let output = "<div class='grid-container'>";
+            for (let k = 0; k < z.length; k++) {
+                let x = z[k].childNodes;
+                output += "<div class='emp'>";
+                for (let i = 0; i < x.length; i++) {
+                    let y = x[i];
+                    if (y.nodeType === 1) {
+                        if (y.nodeName !== "Empimage") {
+                            output += "<b>" + y.nodeName.replace("_", " ") + ":</b> " + y.firstChild.nodeValue + "<br/>";
+                        } else {
+                            output += "<img class='empimg' src='" + y.firstChild.nodeValue + "' alt='Employee Photo'><br/>";
+                        }
+                    }
+                }
+                output += "</div>";
+            }
+            output += "</div>";
+            document.getElementById("empData").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
