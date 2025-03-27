@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Users - ABC Colleges</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .emp {
+            border: 3px solid black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .empimg {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body onload="getData()">
+    <h1>ABC Colleges - Library Users</h1>
+    <div id="empData" class="grid-container"></div> <!-- Container for student data -->
+
+    <script>
+        function getData() {
+            fetch("students.xml") // Fetch the XML file
+                .then(response => response.text()) // Convert response to text
+                .then(str => new window.DOMParser().parseFromString(str, "text/xml")) // Parse XML
+                .then(xml => {
+                    let z = xml.getElementsByTagName("emp"); // Get <emp> elements
+                    let output = "<div class='grid-container'>";
+
+                    for (let k = 0; k < z.length; k++) {
+                        let x = z[k].children; // Get child elements of <emp>
+                        output += "<div class='emp'>";
+
+                        for (let i = 0; i < x.length; i++) {
+                            let y = x[i];
+
+                            if (y.nodeName !== "EMPIMAGE") {
+                                output += `<b>${y.nodeName.replace("_", " ")}</b>: ${y.textContent}<br/>`;
+                            } else {
+                                output += `<b>${y.nodeName.replace("_", " ")}</b>: <br><img class='empimg' src='${y.textContent}' alt='Student Image'><br/>`;
+                            }
+                        }
+
+                        output += "</div>";
+                    }
+
+                    output += "</div>"; // Close grid-container
+                    document.getElementById("empData").innerHTML = output;
+                })
+                .catch(error => console.error("Error loading XML:", error)); // Handle errors
+        }
+    </script>
+</body>
+</html>

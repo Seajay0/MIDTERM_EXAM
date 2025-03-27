@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <emp>
+        <name>Juan Dela Cruz</name>
+        <course>BSIT</course>
+        <year_section>3AG2</year_section>
+        <adviser>Mrs. Teresita Mangahas</adviser>
+        <school_year>2025-2026</school_year>
+        <EMPIMAGE>https://thumbs.dreamstime.com/b/happy-businessman-7651032.jpg</EMPIMAGE>
+    </emp>
+    <emp>
+        <name>Kevin James</name>
+        <course>BSIT</course>
+        <year_section>3AG2</year_section>
+        <adviser>Mrs. Teresita Mangahas</adviser>
+        <school_year>2025-2026</school_year>
+        <EMPIMAGE>https://thumbs.dreamstime.com/z/skeptical-attractive-young-man-isolated-white-35689764.jpg</EMPIMAGE>
+    </emp>
+    <emp>
+        <name>Daniel Moreno</name>
+        <course>BSIT</course>
+        <year_section>3AG2</year_section>
+        <adviser>Mrs. Teresita Mangahas</adviser>
+        <school_year>2025-2026</school_year>
+        <EMPIMAGE>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGbAmmrTKR-OiLxQfXT2RkyCI7tA-5jHf_yQ&s</EMPIMAGE>
+    </emp>
+    <emp>
+        <name>Jake Vargas</name>
+        <course>BSIT</course>
+        <year_section>3AG2</year_section>
+        <adviser>Mrs. Teresita Mangahas</adviser>
+        <school_year>2025-2026</school_year>
+        <EMPIMAGE>https://media.istockphoto.com/id/1334205777/photo/employee-solo-performance.jpg?s=1024x1024&w=is&k=20&c=pOyLK-ucRKRr14PGrWzMeBNQWBbq256hp5K0hKmfwEE=</EMPIMAGE>
+    </emp>
+</students>
